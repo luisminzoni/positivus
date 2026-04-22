@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { type } from '../../styles/tokens';
 import { cn } from '../../lib/utils';
 import { Button } from '../ui/Button';
+import contactUsImg from '../../assets/contact-us-img.svg';
 
 type ContactTab = 'say-hi' | 'get-quote';
 
@@ -127,12 +128,8 @@ export function Contact() {
             </Button>
           </form>
 
-          {/* Illustration Placeholder */}
-          <div className="w-full aspect-[4/3] rounded-xl bg-white border-2 border-brand-dark flex items-center justify-center">
-            <span className="text-brand-dark text-sm font-medium opacity-40">
-              [ILLUSTRATION] Contact illustration
-            </span>
-          </div>
+          {/* Illustration */}
+          <img src={contactUsImg} alt="Contact us illustration" className="w-full object-contain" />
         </div>
       </div>
     </section>

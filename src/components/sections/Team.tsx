@@ -2,37 +2,50 @@ import { type } from '../../styles/tokens';
 import { cn } from '../../lib/utils';
 import { SectionHeader } from '../ui/SectionHeader';
 import { Button } from '../ui/Button';
+import johnImg from '../../assets/john-img.svg';
+import janeImg from '../../assets/jane-img.svg';
+import michaelImg from '../../assets/michael-img.svg';
+import emilyImg from '../../assets/emily-img.svg';
+import brianImg from '../../assets/brian-img.svg';
+import sarahImg from '../../assets/sarah-img.svg';
+import linkedinImg from '../../assets/linkedin-img.svg';
 
 const teamMembers = [
   {
     name: 'John Smith',
     role: 'CEO and Founder',
     bio: '10+ years of experience in digital marketing. Expertise in SEO, PPC, and content strategy.',
+    img: johnImg,
   },
   {
     name: 'Jane Doe',
     role: 'Director of Operations',
     bio: '7+ years of experience in project management and team leadership. Strong organizational and communication skills.',
+    img: janeImg,
   },
   {
     name: 'Michael Brown',
     role: 'Senior SEO Specialist',
     bio: '5+ years of experience in SEO and content creation. Proficient in keyword research and on-page optimization.',
+    img: michaelImg,
   },
   {
     name: 'Emily Johnson',
     role: 'PPC Manager',
     bio: '3+ years of experience in paid search advertising. Skilled in campaign management and performance analysis.',
+    img: emilyImg,
   },
   {
     name: 'Brian Williams',
     role: 'Social Media Specialist',
     bio: '4+ years of experience in social media marketing. Proficient in creating and scheduling content, analyzing metrics, and building engagement.',
+    img: brianImg,
   },
   {
     name: 'Sarah Kim',
     role: 'Content Creator',
     bio: '2+ years of experience in writing and editing. Skilled in creating compelling, SEO-optimized content for various industries.',
+    img: sarahImg,
   },
 ];
 
@@ -53,12 +66,8 @@ export function Team() {
               key={member.name}
               className="rounded-card border-2 border-brand-dark shadow-card bg-white p-[40px] flex flex-col gap-4"
             >
-              {/* Photo placeholder */}
-              <div className="w-[100px] h-[100px] rounded-full bg-brand-gray border-2 border-brand-dark flex items-center justify-center shrink-0 self-start">
-                <span className="text-[11px] text-brand-dark font-medium opacity-40">
-                  [PHOTO]
-                </span>
-              </div>
+              {/* Photo */}
+              <img src={member.img} alt={member.name} className="w-[100px] h-[100px] rounded-full object-cover shrink-0 self-start border-2 border-brand-dark" />
 
               {/* Info */}
               <div className="flex flex-col gap-1">
@@ -76,10 +85,10 @@ export function Team() {
                 </p>
               </div>
 
-              {/* [ICON] LinkedIn icon placeholder */}
-              <div className="w-[30px] h-[30px] rounded-full bg-brand-dark flex items-center justify-center self-end mt-auto">
-                <span className="text-white text-[10px] font-bold">[in]</span>
-              </div>
+              {/* LinkedIn */}
+              <a href="#" aria-label="LinkedIn" className="self-end mt-auto">
+                <img src={linkedinImg} alt="LinkedIn" className="w-[30px] h-[30px]" />
+              </a>
             </div>
           ))}
         </div>

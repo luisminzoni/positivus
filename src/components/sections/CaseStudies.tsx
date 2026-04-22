@@ -1,6 +1,7 @@
 import { type } from '../../styles/tokens';
 import { cn } from '../../lib/utils';
 import { SectionHeader } from '../ui/SectionHeader';
+import greenArrowUp from '../../assets/green-arrow-up.svg';
 
 const caseStudies = [
   {
@@ -41,8 +42,7 @@ export function CaseStudies() {
                 className="flex items-center gap-2 text-brand-green text-[18px] font-medium"
               >
                 Learn more
-                {/* [ICON] Arrow icon */}
-                <span>→</span>
+                <img src={greenArrowUp} alt="" className="w-[41px] h-[41px]" />
               </a>
             </div>
           ))}

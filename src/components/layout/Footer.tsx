@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '../ui/Button';
 import { cn } from '../../lib/utils';
 import { type } from '../../styles/tokens';
+import positivusLogo from '../../assets/positivus-logo-white.svg';
 
 const navLinks = [
   { label: 'About us', href: '#about' },
@@ -20,11 +21,8 @@ export function Footer() {
         {/* Top row */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 shrink-0">
-            <div className="w-[36px] h-[36px] rounded-full bg-brand-green flex items-center justify-center text-brand-dark text-xs font-bold shrink-0">
-              [★]
-            </div>
-            <span className="text-[24px] font-medium text-white">Positivus</span>
+          <a href="/" className="shrink-0">
+            <img src={positivusLogo} alt="Positivus" className="h-[36px] w-auto" />
           </a>
 
           {/* Nav */}

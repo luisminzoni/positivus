@@ -1,21 +1,30 @@
 import { type } from '../../styles/tokens';
 import { cn } from '../../lib/utils';
 import { SectionHeader } from '../ui/SectionHeader';
+import servicesImg1 from '../../assets/services-img-1.svg';
+import servicesImg2 from '../../assets/services-img-2.svg';
+import servicesImg3 from '../../assets/services-img-3.svg';
+import servicesImg4 from '../../assets/services-img-4.svg';
+import servicesImg5 from '../../assets/services-img-5.svg';
+import servicesImg6 from '../../assets/services-img-6.svg';
+import greenArrowCircle from '../../assets/green-arrow-circle.svg';
+import whiteArrowCircle from '../../assets/white-arrow-circle.svg';
 
 type CardVariant = 'gray' | 'green' | 'dark';
 
 interface ServiceCard {
   title: string;
   variant: CardVariant;
+  img: string;
 }
 
 const services: ServiceCard[] = [
-  { title: 'Search engine\noptimization', variant: 'gray' },
-  { title: 'Pay-per-click\nadvertising', variant: 'green' },
-  { title: 'Social Media\nMarketing', variant: 'dark' },
-  { title: 'Email\nMarketing', variant: 'gray' },
-  { title: 'Content\nCreation', variant: 'green' },
-  { title: 'Analytics and\nTracking', variant: 'dark' },
+  { title: 'Search engine\noptimization', variant: 'gray', img: servicesImg1 },
+  { title: 'Pay-per-click\nadvertising', variant: 'green', img: servicesImg2 },
+  { title: 'Social Media\nMarketing', variant: 'dark', img: servicesImg3 },
+  { title: 'Email\nMarketing', variant: 'gray', img: servicesImg4 },
+  { title: 'Content\nCreation', variant: 'green', img: servicesImg5 },
+  { title: 'Analytics and\nTracking', variant: 'dark', img: servicesImg6 },
 ];
 
 const cardBg: Record<CardVariant, string> = {
@@ -68,17 +77,9 @@ export function Services() {
                 {service.title}
               </h3>
 
-              {/* Illustration placeholder + Learn more */}
+              {/* Illustration + Learn more */}
               <div className="flex flex-col items-end gap-4">
-                {/* [ILLUSTRATION] Service illustration */}
-                <div
-                  className={cn(
-                    'w-[80px] h-[80px] rounded-full border-2 border-brand-dark flex items-center justify-center text-[10px] font-medium opacity-40',
-                    cardText[service.variant],
-                  )}
-                >
-                  [IMG]
-                </div>
+                <img src={service.img} alt={service.title} className="w-[80px] h-[80px] object-contain" />
 
                 {/* Learn more */}
                 <a
@@ -88,15 +89,11 @@ export function Services() {
                     cardText[service.variant],
                   )}
                 >
-                  <span
-                    className={cn(
-                      'w-[41px] h-[41px] rounded-full flex items-center justify-center shrink-0',
-                      arrowColor[service.variant],
-                    )}
-                  >
-                    {/* [ICON] Arrow icon */}
-                    →
-                  </span>
+                  <img
+                    src={service.variant === 'dark' ? whiteArrowCircle : greenArrowCircle}
+                    alt="Learn more"
+                    className="w-[41px] h-[41px] shrink-0"
+                  />
                   Learn more
                 </a>
               </div>

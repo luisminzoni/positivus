@@ -1,4 +1,5 @@
 import { Button } from '../ui/Button';
+import positivusLogo from '../../assets/positivus-logo-black.svg';
 
 const navLinks = [
   { label: 'About us', href: '#about' },
@@ -13,14 +14,8 @@ export function Header() {
     <header className="w-full px-4 py-5 md:px-10 lg:px-[100px]">
       <div className="max-w-[1240px] mx-auto flex items-center justify-between gap-4">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 shrink-0">
-          {/* [ICON] Logo icon placeholder */}
-          <div className="w-[36px] h-[36px] rounded-full bg-brand-dark flex items-center justify-center text-white text-xs font-bold shrink-0">
-            [★]
-          </div>
-          <span className="text-[24px] font-medium text-brand-dark">
-            Positivus
-          </span>
+        <a href="/" className="shrink-0">
+          <img src={positivusLogo} alt="Positivus" className="h-[36px] w-auto" />
         </a>
 
         {/* Desktop Nav */}

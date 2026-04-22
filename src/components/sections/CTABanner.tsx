@@ -1,6 +1,7 @@
 import { Button } from '../ui/Button';
 import { type } from '../../styles/tokens';
 import { cn } from '../../lib/utils';
+import ctaIllustration from '../../assets/cta-illustration.svg';
 
 export function CTABanner() {
   return (
@@ -21,12 +22,8 @@ export function CTABanner() {
             </Button>
           </div>
 
-          {/* Illustration Placeholder */}
-          <div className="shrink-0 w-full max-w-[360px] aspect-[4/3] rounded-xl bg-white border-2 border-brand-dark flex items-center justify-center z-10">
-            <span className="text-brand-dark text-sm font-medium opacity-40">
-              [ILLUSTRATION] CTA illustration
-            </span>
-          </div>
+          {/* Illustration */}
+          <img src={ctaIllustration} alt="CTA illustration" className="shrink-0 w-full max-w-[360px] object-contain z-10" />
         </div>
       </div>
     </section>

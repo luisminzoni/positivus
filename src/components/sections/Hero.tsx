@@ -1,6 +1,7 @@
 import { Button } from '../ui/Button';
 import { type } from '../../styles/tokens';
 import { cn } from '../../lib/utils';
+import mainImg from '../../assets/main-img.svg';
 
 export function Hero() {
   return (
@@ -23,13 +24,9 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Right: Illustration Placeholder */}
+        {/* Right: Illustration */}
         <div className="flex justify-center md:justify-end">
-          <div className="w-full max-w-[530px] aspect-square rounded-2xl bg-brand-gray border-2 border-brand-dark flex items-center justify-center">
-            <span className="text-brand-dark text-lg font-medium opacity-40">
-              [ILLUSTRATION] Hero illustration
-            </span>
-          </div>
+          <img src={mainImg} alt="Hero illustration" className="w-full max-w-[530px]" />
         </div>
       </div>
     </section>
