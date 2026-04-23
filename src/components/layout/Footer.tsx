@@ -16,9 +16,9 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { label: 'LinkedIn', href: '#', icon: linkedinIcon },
-  { label: 'Facebook', href: '#', icon: facebookIcon },
-  { label: 'Twitter', href: '#', icon: twitterIcon },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com', icon: linkedinIcon },
+  { label: 'Facebook', href: 'https://www.facebook.com', icon: facebookIcon },
+  { label: 'Twitter',  href: 'https://www.twitter.com',  icon: twitterIcon },
 ];
 
 export function Footer() {
@@ -55,6 +55,8 @@ export function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:opacity-80 transition-opacity"
                 >
                   <img src={icon} alt={label} className="w-[30px] h-[30px]" />
@@ -124,6 +126,8 @@ export function Footer() {
                 key={label}
                 href={href}
                 aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:opacity-80 transition-opacity"
               >
                 <img src={icon} alt={label} className="w-[30px] h-[30px]" />
@@ -141,6 +145,8 @@ export function Footer() {
             </p>
             <a
               href="#"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[18px] text-white underline hover:text-brand-green transition-colors"
             >
               Privacy Policy

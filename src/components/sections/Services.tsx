@@ -16,15 +16,16 @@ interface ServiceCard {
   title: string;
   variant: CardVariant;
   img: string;
+  titleBg: 'green' | 'white';
 }
 
 const services: ServiceCard[] = [
-  { title: 'Search engine\noptimization', variant: 'gray', img: servicesImg1 },
-  { title: 'Pay-per-click\nadvertising', variant: 'green', img: servicesImg2 },
-  { title: 'Social Media\nMarketing', variant: 'dark', img: servicesImg3 },
-  { title: 'Email\nMarketing', variant: 'gray', img: servicesImg4 },
-  { title: 'Content\nCreation', variant: 'green', img: servicesImg5 },
-  { title: 'Analytics and\nTracking', variant: 'dark', img: servicesImg6 },
+  { title: 'Search engine\noptimization',  variant: 'gray',  img: servicesImg1, titleBg: 'green' },
+  { title: 'Pay-per-click\nadvertising',   variant: 'green', img: servicesImg2, titleBg: 'white' },
+  { title: 'Social Media\nMarketing',      variant: 'dark',  img: servicesImg3, titleBg: 'white' },
+  { title: 'Email\nMarketing',             variant: 'gray',  img: servicesImg4, titleBg: 'green' },
+  { title: 'Content\nCreation',            variant: 'green', img: servicesImg5, titleBg: 'white' },
+  { title: 'Analytics and\nTracking',      variant: 'dark',  img: servicesImg6, titleBg: 'green' },
 ];
 
 const cardBg: Record<CardVariant, string> = {
@@ -64,15 +65,22 @@ export function Services() {
             >
               {/* Left: Title + Learn more */}
               <div className="flex flex-col justify-between gap-6 flex-1">
-                <h3
-                  className={cn(
-                    type.h3,
-                    cardText[service.variant],
-                    'whitespace-pre-line',
-                  )}
-                >
-                  {service.title}
-                </h3>
+                <div className="flex flex-col gap-1">
+                  {service.title.split('\n').map((line, i) => (
+                    <h3
+                      key={i}
+                      className={cn(
+                        type.h3,
+                        'whitespace-nowrap inline-block self-start rounded-tag px-[7px] py-[2px]',
+                        service.titleBg === 'green'
+                          ? 'bg-brand-green text-brand-dark'
+                          : 'bg-white text-brand-dark',
+                      )}
+                    >
+                      {line}
+                    </h3>
+                  ))}
+                </div>
 
                 <a
                   href="#"
