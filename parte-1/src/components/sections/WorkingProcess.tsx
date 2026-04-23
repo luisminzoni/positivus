@@ -64,7 +64,7 @@ export function WorkingProcess() {
                 key={step.number}
               style={{ boxShadow: '0px 4px 0px 0px #191A23' }}
               className={cn(
-                'rounded-card border-2 border-brand-dark px-[60px] py-[40px] transition-colors duration-200',
+                'rounded-card border-2 border-brand-dark px-[35px] md:px-[60px] py-[40px] transition-colors duration-200',
                   isOpen ? 'bg-brand-green' : 'bg-brand-gray',
                 )}
               >

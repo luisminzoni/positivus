@@ -25,9 +25,9 @@ export function Footer() {
   const [email, setEmail] = useState('');
 
   return (
-    <footer className="px-4 pb-0 pt-[55px] md:px-10 lg:px-[100px]">
+    <footer className="pb-0 pt-[55px] md:px-4 md:px-10 lg:px-[100px]">
       <div className="max-w-[1240px] mx-auto">
-        <div className="bg-brand-dark rounded-t-[45px] px-[25px] md:px-[60px] py-[55px] flex flex-col gap-[50px]">
+        <div className="bg-brand-dark md:rounded-t-[45px] px-[25px] md:px-[60px] py-[55px] flex flex-col gap-[50px]">
           {/* Top row */}
           <div className="flex flex-col md:flex-row justify-between items-center md:items-center gap-6 md:gap-10">
             {/* Logo */}
