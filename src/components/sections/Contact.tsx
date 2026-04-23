@@ -30,18 +30,16 @@ export function Contact() {
     <section id="contact" className="px-4 py-16 md:px-10 lg:px-[100px]">
       <div className="max-w-[1240px] mx-auto flex flex-col gap-10">
         {/* Section title */}
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-4">
-            <span className="inline-block bg-brand-green rounded-tag px-[7px] py-[2px]">
-              <span className={cn(type.h2, 'text-brand-dark')}>Contact Us</span>
-            </span>
-          </div>
-          <p className={cn(type.body, 'text-brand-dark max-w-[580px]')}>
+        <div className="flex flex-col items-center text-center gap-4 sm:flex-row sm:items-center sm:text-left sm:gap-[40px]">
+          <span className="inline-block bg-brand-green rounded-tag px-[7px] py-[2px] shrink-0">
+            <span className={cn(type.h2, 'text-brand-dark')}>Contact Us</span>
+          </span>
+          <p className={cn(type.body, 'text-brand-dark max-w-[323px]')}>
             Connect with Us: Let's Discuss Your Digital Marketing Needs
           </p>
         </div>
 
-        <div className="bg-brand-gray rounded-card border-2 border-brand-dark p-[60px] grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+        <div className="bg-brand-gray rounded-card p-[30px] md:pl-[60px] md:pt-[60px] md:pb-[60px] md:pr-0 grid grid-cols-1 md:grid-cols-2 gap-16 items-start overflow-hidden md:h-[773px]">
           {/* Form */}
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             {/* Tabs */}
@@ -129,7 +127,9 @@ export function Contact() {
           </form>
 
           {/* Illustration */}
-          <img src={contactUsImg} alt="Contact us illustration" className="w-full object-contain" />
+          <div className="hidden md:flex items-end justify-end h-full overflow-hidden">
+            <img src={contactUsImg} alt="Contact us illustration" style={{width: '650px', height: '648px', maxWidth: 'none', flexShrink: 0, transform: 'translateX(47%)'}} />
+          </div>
         </div>
       </div>
     </section>

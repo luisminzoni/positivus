@@ -6,6 +6,7 @@ interface SectionHeaderProps {
   label: string;
   description?: string;
   className?: string;
+  descriptionClassName?: string;
   align?: 'left' | 'center';
   labelVariant?: 'green' | 'dark' | 'gray';
   light?: boolean;
@@ -15,6 +16,7 @@ export function SectionHeader({
   label,
   description,
   className,
+  descriptionClassName,
   align = 'left',
   labelVariant = 'green',
   light = false,
@@ -22,7 +24,7 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        'flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8',
+        'flex flex-col gap-4 items-center text-center sm:flex-row sm:items-center sm:text-left sm:gap-[40px]',
         align === 'center' && 'sm:flex-col sm:text-center sm:items-center',
         className,
       )}
@@ -39,6 +41,7 @@ export function SectionHeader({
             type.body,
             'max-w-[580px]',
             light ? 'text-white' : 'text-brand-dark',
+            descriptionClassName,
           )}
         >
           {description}
