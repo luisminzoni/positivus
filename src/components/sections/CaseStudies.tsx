@@ -1,3 +1,4 @@
+import useEmblaCarousel from 'embla-carousel-react';
 import { type } from '../../styles/tokens';
 import { cn } from '../../lib/utils';
 import { SectionHeader } from '../ui/SectionHeader';
@@ -19,6 +20,11 @@ const caseStudies = [
 ];
 
 export function CaseStudies() {
+  const [emblaRef] = useEmblaCarousel({
+    align: 'start',
+    containScroll: 'trimSnaps',
+  });
+
   return (
     <section className="px-4 py-16 md:px-10 lg:px-[100px]">
       <div className="max-w-[1240px] mx-auto flex flex-col gap-10">
@@ -27,26 +33,40 @@ export function CaseStudies() {
           description="Explore Real-Life Examples of Our Proven Digital Marketing Success through Our Case Studies"
         />
 
-        {/* Cards container – dark background */}
-        <div className="bg-brand-dark rounded-card p-[60px] grid grid-cols-1 md:grid-cols-3 gap-0 divide-y-2 md:divide-y-0 md:divide-x-2 divide-white/20">
+        {/* ── Desktop: static 3-col grid ── */}
+        <div className="hidden md:grid md:grid-cols-3 bg-brand-dark rounded-card p-[60px] gap-0 divide-x-2 divide-white/20">
           {caseStudies.map((study, idx) => (
             <div
               key={idx}
-              className="flex flex-col gap-6 px-0 py-8 md:py-0 md:px-[60px] first:pl-0 last:pr-0"
+              className="flex flex-col gap-[20px] px-[60px] first:pl-0 last:pr-0"
             >
-              <p className={cn(type.body, 'text-white')}>
-                {study.description}
-              </p>
-              <a
-                href="#"
-                className="flex items-center gap-2 text-brand-green text-[18px] font-medium"
-              >
+              <p className={cn(type.body, 'text-white')}>{study.description}</p>
+              <a href="#" className="flex items-center gap-2 text-brand-green text-[18px] font-medium">
                 Learn more
-                <img src={greenArrowUp} alt="" className="w-[41px] h-[41px]" />
+                <img src={greenArrowUp} alt="" className="w-[10px] h-[10px]" />
               </a>
             </div>
           ))}
         </div>
+
+        {/* ── Mobile: Embla align carousel ── */}
+        <div className="md:hidden overflow-hidden" ref={emblaRef}>
+          <div className="flex gap-[16px]">
+            {caseStudies.map((study, idx) => (
+              <div
+                key={idx}
+                className="flex-[0_0_82%] min-w-0 bg-brand-dark border-2 border-white/20 rounded-card p-[30px] flex flex-col gap-[20px]"
+              >
+                <p className={cn(type.body, 'text-white')}>{study.description}</p>
+                <a href="#" className="flex items-center gap-2 text-brand-green text-[18px] font-medium">
+                  Learn more
+                  <img src={greenArrowUp} alt="" className="w-[10px] h-[10px]" />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
