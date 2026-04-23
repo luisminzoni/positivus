@@ -39,11 +39,6 @@ const cardText: Record<CardVariant, string> = {
   dark: 'text-white',
 };
 
-const arrowColor: Record<CardVariant, string> = {
-  gray: 'bg-brand-dark text-white',
-  green: 'bg-brand-dark text-white',
-  dark: 'bg-brand-green text-brand-dark',
-};
 
 export function Services() {
   return (
@@ -61,27 +56,24 @@ export function Services() {
           {services.map((service) => (
             <div
               key={service.title}
+              style={{ boxShadow: '0px 4px 0px 0px #191A23' }}
               className={cn(
-                'rounded-card border-2 border-brand-dark shadow-card p-[50px] flex justify-between items-end min-h-[240px] gap-4',
+                'rounded-card border-2 border-brand-dark p-[50px] flex justify-between items-stretch min-h-[310px] gap-4',
                 cardBg[service.variant],
               )}
             >
-              {/* Title */}
-              <h3
-                className={cn(
-                  type.h3,
-                  cardText[service.variant],
-                  'whitespace-pre-line max-w-[220px]',
-                )}
-              >
-                {service.title}
-              </h3>
+              {/* Left: Title + Learn more */}
+              <div className="flex flex-col justify-between gap-6 flex-1">
+                <h3
+                  className={cn(
+                    type.h3,
+                    cardText[service.variant],
+                    'whitespace-pre-line',
+                  )}
+                >
+                  {service.title}
+                </h3>
 
-              {/* Illustration + Learn more */}
-              <div className="flex flex-col items-end gap-4">
-                <img src={service.img} alt={service.title} className="w-[80px] h-[80px] object-contain" />
-
-                {/* Learn more */}
                 <a
                   href="#"
                   className={cn(
@@ -96,6 +88,11 @@ export function Services() {
                   />
                   Learn more
                 </a>
+              </div>
+
+              {/* Right: Image */}
+              <div className="flex items-end">
+                <img src={service.img} alt={service.title} className="w-[210px] h-[170px] object-contain" />
               </div>
             </div>
           ))}

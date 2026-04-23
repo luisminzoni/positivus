@@ -32,7 +32,7 @@ export function Button({
   return (
     <button
       className={cn(
-        'rounded-pill font-medium transition-colors duration-200 cursor-pointer',
+        'rounded-[14px] font-medium transition-colors duration-200 cursor-pointer',
         variantClasses[variant],
         sizeClasses[size],
         className,

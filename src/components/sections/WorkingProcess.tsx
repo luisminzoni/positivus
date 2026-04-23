@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { type } from '../../styles/tokens';
 import { cn } from '../../lib/utils';
 import { SectionHeader } from '../ui/SectionHeader';
+import negativeIcon from '../../assets/negative-icon.svg';
+import positiveIcon from '../../assets/positive-icon.svg';
 
 const steps = [
   {
@@ -51,6 +53,7 @@ export function WorkingProcess() {
         <SectionHeader
           label="Our Working Process"
           description="Step-by-Step Guide to Achieving Your Business Goals"
+          descriptionClassName="max-w-[292px]"
         />
 
         <div className="flex flex-col gap-4">
@@ -59,8 +62,9 @@ export function WorkingProcess() {
             return (
               <div
                 key={step.number}
-                className={cn(
-                  'rounded-card border-2 border-brand-dark shadow-card px-[60px] py-[40px] transition-colors duration-200',
+              style={{ boxShadow: '0px 4px 0px 0px #191A23' }}
+              className={cn(
+                'rounded-card border-2 border-brand-dark px-[60px] py-[40px] transition-colors duration-200',
                   isOpen ? 'bg-brand-green' : 'bg-brand-gray',
                 )}
               >
@@ -79,17 +83,12 @@ export function WorkingProcess() {
                   </div>
 
                   {/* Toggle icon */}
-                  <div
-                    className={cn(
-                      'w-[58px] h-[58px] rounded-full border-2 border-brand-dark flex items-center justify-center shrink-0 text-[24px] transition-colors',
-                      isOpen
-                        ? 'bg-brand-gray text-brand-dark'
-                        : 'bg-white text-brand-dark',
-                    )}
+                  <img
+                    src={isOpen ? negativeIcon : positiveIcon}
+                    alt={isOpen ? 'Fechar' : 'Abrir'}
+                    className="w-[58px] h-[58px] shrink-0"
                     aria-hidden
-                  >
-                    {isOpen ? '−' : '+'}
-                  </div>
+                  />
                 </button>
 
                 {isOpen && (

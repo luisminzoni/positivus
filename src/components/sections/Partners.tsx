@@ -16,9 +16,9 @@ const partners = [
 
 export function Partners() {
   return (
-    <section className="px-4 py-8 md:px-10 lg:px-[100px] border-y-2 border-brand-dark">
+    <section className="px-4 py-8 md:px-10 lg:px-[100px]">
       <div className="max-w-[1240px] mx-auto">
-        <ul className="flex flex-wrap justify-around items-center gap-6 md:gap-8">
+        <ul className="flex flex-wrap justify-center items-center gap-6 md:gap-[95px]">
           {partners.map(({ name, src }) => (
             <li key={name} className="flex items-center">
               <img src={src} alt={`${name} logo`} className="h-[48px] w-auto object-contain grayscale" />

@@ -32,7 +32,7 @@ export default {
         tag: '7px',
       },
       boxShadow: {
-        card: '4px 4px 0px 0px #191A23',
+        card: '0px 4px 0px 0px #191A23',
       },
     },
   },

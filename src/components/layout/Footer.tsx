@@ -3,6 +3,9 @@ import { Button } from '../ui/Button';
 import { cn } from '../../lib/utils';
 import { type } from '../../styles/tokens';
 import positivusLogo from '../../assets/positivus-logo-white.svg';
+import linkedinIcon from '../../assets/linkedin-icon-white.svg';
+import facebookIcon from '../../assets/facebook-icon-white.svg';
+import twitterIcon from '../../assets/twitter-icon-white.svg';
 
 const navLinks = [
   { label: 'About us', href: '#about' },
@@ -12,122 +15,137 @@ const navLinks = [
   { label: 'Blog', href: '#blog' },
 ];
 
+const socialLinks = [
+  { label: 'LinkedIn', href: '#', icon: linkedinIcon },
+  { label: 'Facebook', href: '#', icon: facebookIcon },
+  { label: 'Twitter', href: '#', icon: twitterIcon },
+];
+
 export function Footer() {
   const [email, setEmail] = useState('');
 
   return (
-    <footer className="bg-brand-dark px-4 py-[55px] md:px-10 lg:px-[100px]">
-      <div className="max-w-[1240px] mx-auto flex flex-col gap-[50px]">
-        {/* Top row */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
-          {/* Logo */}
-          <a href="/" className="shrink-0">
-            <img src={positivusLogo} alt="Positivus" className="h-[36px] w-auto" />
-          </a>
+    <footer className="px-4 pb-0 pt-[55px] md:px-10 lg:px-[100px]">
+      <div className="max-w-[1240px] mx-auto">
+        <div className="bg-brand-dark rounded-t-[45px] px-[25px] md:px-[60px] py-[55px] flex flex-col gap-[50px]">
+          {/* Top row */}
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-center gap-6 md:gap-10">
+            {/* Logo */}
+            <a href="/" className="shrink-0">
+              <img src={positivusLogo} alt="Positivus" className="h-[36px] w-auto" />
+            </a>
 
-          {/* Nav */}
-          <nav className="flex flex-wrap gap-6 md:gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-[18px] text-white underline hover:text-brand-green transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+            {/* Nav – one per line on mobile, row on desktop */}
+            <nav className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-[18px] text-white underline hover:text-brand-green transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
 
-          {/* Social icons */}
-          <div className="flex gap-3">
-            {['LinkedIn', 'Facebook', 'Twitter'].map((social) => (
-              <a
-                key={social}
-                href="#"
-                aria-label={social}
-                className="w-[30px] h-[30px] rounded-full bg-white/10 border border-white/20 flex items-center justify-center hover:bg-brand-green hover:border-brand-green transition-colors"
+            {/* Social icons – desktop only in this row */}
+            <div className="hidden md:flex gap-3">
+              {socialLinks.map(({ label, href, icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="hover:opacity-80 transition-opacity"
+                >
+                  <img src={icon} alt={label} className="w-[30px] h-[30px]" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Divider */}
+          <hr className="border-white/20" />
+
+          {/* Middle row: contact + subscribe */}
+          <div className="flex flex-col md:flex-row justify-between gap-10 items-center md:items-start">
+            {/* Contact info */}
+            <div className="flex flex-col items-center md:items-start">
+              <span className="inline-block bg-brand-green rounded-[7px] px-[7px] py-[2px] mb-[27px]">
+                <h4 className={cn(type.h4, 'text-brand-dark')}>Contact us:</h4>
+              </span>
+              <ul className="flex flex-col gap-[20px] items-center md:items-start text-center md:text-left">
+                <li className="text-[18px] text-white">
+                  Email:{' '}
+                  <a href="mailto:info@positivus.com" className="underline hover:text-brand-green">
+                    info@positivus.com
+                  </a>
+                </li>
+                <li className="text-[18px] text-white">
+                  Phone:{' '}
+                  <a href="tel:5555678901" className="underline hover:text-brand-green">
+                    555-567-8901
+                  </a>
+                </li>
+                <li className="text-[18px] text-white">
+                  Address: 1234 Main St, Moonstone City, Stardust State 12345
+                </li>
+              </ul>
+            </div>
+
+            {/* Subscribe form */}
+            <div className="rounded-[14px] p-[38px] flex items-center justify-center w-full md:w-[634px] md:h-[184px]" style={{background:'#292A32'}}>
+              <form
+                className="flex flex-col md:flex-row gap-3 items-center w-full"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setEmail('');
+                }}
               >
-                {/* [ICON] {social} icon */}
-                <span className="text-white text-[10px] font-bold">
-                  [{social[0]}]
-                </span>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full md:w-[285px] h-[67px] border border-white/20 rounded-[14px] px-5 text-[16px] text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-brand-green"
+                  style={{background:'#292A32'}}
+                />
+                <Button variant="primary" size="md" type="submit" className="w-full md:w-[249px] h-[68px]">
+                  Subscribe to news
+                </Button>
+              </form>
+            </div>
+          </div>
+
+          {/* Social icons – mobile only, below subscribe card */}
+          <div className="flex md:hidden justify-center gap-3">
+            {socialLinks.map(({ label, href, icon }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                className="hover:opacity-80 transition-opacity"
+              >
+                <img src={icon} alt={label} className="w-[30px] h-[30px]" />
               </a>
             ))}
           </div>
-        </div>
 
-        {/* Divider */}
-        <hr className="border-white/20" />
+          {/* Divider */}
+          <hr className="border-white/20" />
 
-        {/* Middle row: contact + subscribe */}
-        <div className="flex flex-col md:flex-row justify-between gap-10 items-start">
-          {/* Contact info */}
-          <div className="flex flex-col gap-3">
-            <h4 className={cn(type.h4, 'text-white')}>Contact us:</h4>
-            <ul className="flex flex-col gap-2">
-              <li className="text-[18px] text-white">
-                Email:{' '}
-                <a
-                  href="mailto:info@positivus.com"
-                  className="underline hover:text-brand-green"
-                >
-                  info@positivus.com
-                </a>
-              </li>
-              <li className="text-[18px] text-white">
-                Phone:{' '}
-                <a
-                  href="tel:5555678901"
-                  className="underline hover:text-brand-green"
-                >
-                  555-567-8901
-                </a>
-              </li>
-              <li className="text-[18px] text-white">
-                Address: 1234 Main St, Moonstone City, Stardust State 12345
-              </li>
-            </ul>
-          </div>
-
-          {/* Subscribe form */}
-          <div className="bg-white/10 rounded-[14px] p-[38px] flex flex-col gap-4 w-full max-w-[450px]">
-            <h4 className={cn(type.h4, 'text-white')}>Subscribe to news</h4>
-            <form
-              className="flex gap-3"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setEmail('');
-              }}
+          {/* Bottom row */}
+          <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-[40px]">
+            <p className="text-[18px] text-white">
+              © 2023 Positivus. All Rights Reserved.
+            </p>
+            <a
+              href="#"
+              className="text-[18px] text-white underline hover:text-brand-green transition-colors"
             >
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="flex-1 border-2 border-white/30 rounded-pill px-5 py-3 text-[16px] bg-transparent text-white placeholder:text-white/50 focus:outline-none focus:border-brand-green"
-              />
-              <Button variant="primary" size="sm" type="submit">
-                Subscribe
-              </Button>
-            </form>
+              Privacy Policy
+            </a>
           </div>
-        </div>
-
-        {/* Divider */}
-        <hr className="border-white/20" />
-
-        {/* Bottom row */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-[18px] text-white">
-            © 2023 Positivus. All Rights Reserved.
-          </p>
-          <a
-            href="#"
-            className="text-[18px] text-white underline hover:text-brand-green transition-colors"
-          >
-            Privacy Policy
-          </a>
         </div>
       </div>
     </footer>

@@ -17,8 +17,8 @@ export function Hero() {
             through a range of services including SEO, PPC, social media
             marketing, and content creation.
           </p>
-          <div>
-            <Button variant="dark" size="md">
+          <div className="hidden md:block">
+            <Button variant="dark" size="md" className="w-full md:w-[264px] h-[68px]">
               Book a consultation
             </Button>
           </div>
@@ -27,6 +27,13 @@ export function Hero() {
         {/* Right: Illustration */}
         <div className="flex justify-center md:justify-end">
           <img src={mainImg} alt="Hero illustration" className="w-full max-w-[530px]" />
+        </div>
+
+        {/* Mobile-only button: below the image */}
+        <div className="md:hidden">
+          <Button variant="dark" size="md" className="w-full h-[68px]">
+            Book a consultation
+          </Button>
         </div>
       </div>
     </section>

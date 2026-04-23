@@ -57,6 +57,7 @@ export function Team() {
           <SectionHeader
             label="Team"
             description="Meet the skilled and experienced team behind our successful digital marketing strategies"
+            descriptionClassName="max-w-[473px]"
           />
         </div>
 
@@ -64,19 +65,30 @@ export function Team() {
           {teamMembers.map((member) => (
             <div
               key={member.name}
-              className="rounded-card border-2 border-brand-dark shadow-card bg-white p-[40px] flex flex-col gap-4"
+              style={{ boxShadow: '0px 4px 0px 0px #191A23' }}
+              className="rounded-card border border-brand-dark bg-white p-[40px] flex flex-col gap-4"
             >
-              {/* Photo */}
-              <img src={member.img} alt={member.name} className="w-[100px] h-[100px] rounded-full object-cover shrink-0 self-start border-2 border-brand-dark" />
-
-              {/* Info */}
-              <div className="flex flex-col gap-1">
-                <h4 className={cn(type.h4, 'text-brand-dark font-medium')}>
-                  {member.name}
-                </h4>
-                <span className="text-[16px] text-brand-dark/70">
-                  {member.role}
-                </span>
+              {/* Top row: photo + name/role + linkedin */}
+              <div className="flex items-start gap-4">
+                <img src={member.img} alt={member.name} className="w-[100px] h-[100px] rounded-full object-cover shrink-0" />
+                <div className="flex flex-1 items-start justify-between">
+                  <div className="flex flex-col gap-1 justify-end h-[100px]">
+                    <h4 className={cn(type.h4, 'text-brand-dark font-medium')}>
+                      {member.name}
+                    </h4>
+                    <span className="text-[16px] text-brand-dark/70">
+                      {member.role}
+                    </span>
+                  </div>
+                  <a
+                    href="https://linkedin.com"
+                    aria-label="LinkedIn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={linkedinImg} alt="LinkedIn" className="w-[30px] h-[30px]" />
+                  </a>
+                </div>
               </div>
 
               <div className="border-t-2 border-brand-dark pt-4">
@@ -84,17 +96,12 @@ export function Team() {
                   {member.bio}
                 </p>
               </div>
-
-              {/* LinkedIn */}
-              <a href="#" aria-label="LinkedIn" className="self-end mt-auto">
-                <img src={linkedinImg} alt="LinkedIn" className="w-[30px] h-[30px]" />
-              </a>
             </div>
           ))}
         </div>
 
         <div className="flex justify-end">
-          <Button variant="outline" size="md">
+          <Button variant="dark" size="md" className="w-[269px] h-[68px] hover:bg-white hover:text-brand-dark">
             See all team
           </Button>
         </div>
