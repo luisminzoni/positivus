@@ -1,73 +1,16 @@
-# React + TypeScript + Vite
+# Teste Técnico — Landing Pages
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Estrutura
+- `/parte-1` — Landing page Positivus (React + TypeScript + Vite + Tailwind CSS)
+- `/parte-2` — Em breve
 
-Currently, two official plugins are available:
+## Perguntas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**1. Quais ferramentas de IA você usou?**
+GitHub Copilot com agentes Claude Sonnet 4.6 para geração e iteração de código, e Codex para revisão pontual de trechos específicos.
 
-## React Compiler
+**2. Em que etapas a IA ajudou mais?**
+A IA foi mais útil na construção da estrutura base do projeto — scaffolding dos componentes, configuração do Tailwind com tokens de design e integração dos assets SVG. Depois disso, o fluxo foi iterativo: eu analisava o resultado visual, identificava o que estava fora do design e pedia ajustes precisos, acelerando muito o ciclo de feedback.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+**3. O que você ajustou manualmente e por quê?**
+Optei por entregar a landing page completa (não apenas as 4 primeiras seções), o que exigiu mais intervenção nas partes mais complexas. A seção de Testimonials precisou de instalação manual da biblioteca Embla Carousel e refinamento do efeito de balão de fala com a técnica de quadrado rotacionado via CSS. A seção Case Studies no mobile também exigiu ajustes manuais para o comportamento correto do carrossel. A integração de todos os ícones SVG foi feita manualmente, mapeando cada asset ao componente correspondente.
