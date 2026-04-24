@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import CodeWindow from './CodeWindow'
 
-// ── Data ──────────────────────────────────────────────────────────────────────
 const bullets = [
   '+40 horas de conteúdo direto ao ponto',
   'Projetos com Python + IA desde o módulo 1',
@@ -15,8 +14,6 @@ const navLinks = [
   { label: 'Comunidade', href: '#' },
   { label: 'Preços', href: '#' },
 ]
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
 
 /**
  * Linear.app–style word reveal.
@@ -88,7 +85,6 @@ function FadeUp({
   )
 }
 
-// ── TerminalBadge — typewriter effect ────────────────────────────────────────
 const BADGE_FULL = 'Python + IA  ·  Nova Turma 2026'
 
 function TerminalBadge() {
@@ -97,9 +93,7 @@ function TerminalBadge() {
   const [done, setDone] = useState(false)
   const idx = useRef(0)
 
-  // Typing
   useEffect(() => {
-    // Start typing after initial page animation settles
     const startDelay = setTimeout(() => {
       const interval = setInterval(() => {
         idx.current += 1
@@ -114,7 +108,6 @@ function TerminalBadge() {
     return () => clearTimeout(startDelay)
   }, [])
 
-  // Blink cursor — stops blinking after typing finishes (stays visible 1.2s then hides)
   useEffect(() => {
     if (!done) return
     const timeout = setTimeout(() => setShowCursor(false), 1200)
@@ -153,13 +146,11 @@ function CheckIcon() {
   )
 }
 
-// ── Component ─────────────────────────────────────────────────────────────────
 export default function Hero() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <div className="relative min-h-screen bg-[#09090B] overflow-hidden selection:bg-violet-500/30">
-      {/* Background effects */}
       <div className="absolute inset-0 bg-dot-grid opacity-[0.35] pointer-events-none" />
 
       <div
@@ -176,13 +167,11 @@ export default function Hero() {
         }}
       />
 
-      {/* Nav */}
       <nav
         className="relative z-20 border-b border-white/[0.06]"
         style={{ animation: 'fadeDownEl 0.55s ease both' }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
-          {/* Logo — Voltaire font */}
           <a href="#" className="group select-none">
             <span
               className="text-white"
@@ -250,19 +239,13 @@ export default function Hero() {
         )}
       </nav>
 
-      {/* Hero content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-36 lg:pt-20 lg:pb-40">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-12 lg:gap-16 xl:gap-24 items-center">
-
-          {/* Left: Copy */}
           <div className="flex flex-col gap-7">
-
-            {/* Badge — typewriter effect */}
             <FadeUp delay={80} className="self-start">
               <TerminalBadge />
             </FadeUp>
 
-            {/* Headline — Linear word-by-word reveal */}
             <h1 className="text-[2rem] sm:text-4xl lg:text-[2.75rem] xl:text-[3rem] font-black leading-[1.2] tracking-[-0.02em] text-white">
               <RevealWords
                 text="Aprenda Python do zero e construa"
@@ -278,7 +261,6 @@ export default function Hero() {
               />
             </h1>
 
-            {/* Subheadline */}
             <FadeUp delay={980}>
               <p className="text-lg lg:text-xl text-zinc-400 leading-relaxed max-w-[500px]">
                 O curso mais prático do Brasil para quem quer entrar em tecnologia{' '}
@@ -286,7 +268,6 @@ export default function Hero() {
               </p>
             </FadeUp>
 
-            {/* Bullets — staggered */}
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3" role="list">
               {bullets.map((bullet, i) => (
                 <li
@@ -303,7 +284,6 @@ export default function Hero() {
               ))}
             </ul>
 
-            {/* CTAs */}
             <FadeUp delay={1460} className="flex flex-col sm:flex-row gap-3 pt-1">
               <a
                 href="#"
@@ -327,11 +307,8 @@ export default function Hero() {
                 Ver o que vou aprender
               </a>
             </FadeUp>
-
-
           </div>
 
-          {/* Right: Code Window */}
           <div
             className="hidden lg:block relative"
             style={{ animation: 'fadeUpEl 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both' }}
@@ -342,7 +319,6 @@ export default function Hero() {
             />
 
             <div className="relative group">
-              {/* Hover glow ring */}
               <div
                 className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{
@@ -353,7 +329,6 @@ export default function Hero() {
 
               <CodeWindow />
 
-              {/* Floating output card */}
               <div
                 className="absolute -bottom-5 -left-8 z-10 max-w-[270px]"
                 style={{ animation: 'fadeUpEl 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.95s both' }}
@@ -374,7 +349,6 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Floating module badge */}
               <div
                 className="absolute -top-4 -right-6 z-10"
                 style={{ animation: 'fadeUpEl 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both' }}
@@ -394,25 +368,20 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Mobile: code window */}
         <FadeUp delay={1700} className="lg:hidden mt-12">
           <CodeWindow />
         </FadeUp>
 
-        {/* ── O que você encontra na Asimov ── */}
         <div
           className="mt-20 lg:mt-24"
           style={{ animation: 'fadeUpEl 0.75s cubic-bezier(0.16,1,0.3,1) 1.8s both' }}
         >
-          {/* Section label */}
           <p className="text-zinc-500 text-xs uppercase tracking-[0.18em] font-medium mb-6 text-center">
             O que você encontra na Asimov
           </p>
 
-          {/* Divider line + label */}
           <div className="w-full h-px bg-zinc-800/80 mb-8" />
 
-          {/* 4 cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
@@ -467,12 +436,10 @@ export default function Hero() {
                   animation: `fadeUpEl 0.65s cubic-bezier(0.16,1,0.3,1) ${1.9 + i * 0.08}s both`,
                 }}
               >
-                {/* Subtle hover glow */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none rounded-2xl"
                   style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.08), transparent 70%)' }}
                 />
 
-                {/* Icon + Value row */}
                 <div className="flex items-center gap-3">
                   <div
                     className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0`}
@@ -491,7 +458,6 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* Desc */}
                 <p className="text-zinc-500 text-xs leading-relaxed">{item.desc}</p>
               </div>
             ))}

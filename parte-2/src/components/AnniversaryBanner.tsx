@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useState } from 'react'
 
 const TARGET = new Date('2026-05-05T22:00:00.000Z') // 19h BRT = 22h UTC
 const CTA_HREF =
@@ -48,7 +48,6 @@ function Unit({ value, label }: { value: number; label: string }) {
 
 export default function AnniversaryBanner() {
   const [time, setTime] = useState<TimeLeft>(getTimeLeft)
-  const [visible, setVisible] = useState(true)
 
   const tick = useCallback(() => setTime(getTimeLeft()), [])
 
@@ -57,14 +56,13 @@ export default function AnniversaryBanner() {
     return () => clearInterval(id)
   }, [tick])
 
-  if (!visible || TARGET.getTime() <= Date.now()) return null
+  if (TARGET.getTime() <= Date.now()) return null
 
   return (
     <div
       className="fixed bottom-0 left-0 right-0 z-50"
       style={{ animation: 'fadeUpEl 0.55s cubic-bezier(0.16,1,0.3,1) 2s both' }}
     >
-      {/* Gradient line at top */}
       <div
         className="h-px w-full"
         style={{
@@ -82,18 +80,15 @@ export default function AnniversaryBanner() {
         }}
       >
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
-
-          {/* Left: copy */}
           <div className="flex items-center gap-3 min-w-0">
             <span className="text-lg hidden sm:block select-none">🎂</span>
             <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2 text-center sm:text-left">
               <span className="text-white text-md font-semibold leading-tight">
-                O aniversário da Asimov está chegando! 🎉
+                O aniversário da Asimov está chegando!
               </span>
             </div>
           </div>
 
-          {/* Center: countdown */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Unit value={time.days} label="dias" />
             <span className="text-zinc-600 text-lg font-bold mb-3 select-none">:</span>
@@ -104,7 +99,6 @@ export default function AnniversaryBanner() {
             <Unit value={time.seconds} label="seg" />
           </div>
 
-          {/* Right: CTA + close */}
           <div className="flex items-center gap-3 shrink-0">
             <a
               href={CTA_HREF}
@@ -124,22 +118,8 @@ export default function AnniversaryBanner() {
                   '0 2px 14px rgba(124,58,237,0.4)'
               }}
             >
-              Aproveitar oportunidade →
+              Aproveitar oportunidade
             </a>
-            <button
-              onClick={() => setVisible(false)}
-              className="text-zinc-600 hover:text-zinc-300 transition-colors p-1"
-              aria-label="Fechar banner"
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path
-                  d="M1 1l12 12M13 1L1 13"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
           </div>
         </div>
       </div>

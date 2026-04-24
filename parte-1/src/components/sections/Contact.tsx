@@ -29,7 +29,6 @@ export function Contact() {
   return (
     <section id="contact" className="px-4 py-16 md:px-10 lg:px-[100px]">
       <div className="max-w-[1240px] mx-auto flex flex-col gap-10">
-        {/* Section title */}
         <div className="flex flex-col items-center text-center gap-4 sm:flex-row sm:items-center sm:text-left sm:gap-[40px]">
           <span className="inline-block bg-brand-green rounded-tag px-[7px] py-[2px] shrink-0">
             <span className={cn(type.h2, 'text-brand-dark')}>Contact Us</span>
@@ -40,9 +39,7 @@ export function Contact() {
         </div>
 
         <div className="bg-brand-gray rounded-card p-[30px] md:pl-[60px] md:pt-[60px] md:pb-[60px] md:pr-0 grid grid-cols-1 md:grid-cols-2 gap-16 items-start overflow-hidden md:h-[773px]">
-          {/* Form */}
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-            {/* Tabs */}
             <div className="flex gap-6">
               {(['say-hi', 'get-quote'] as const).map((t) => (
                 <label key={t} className="flex items-center gap-2 cursor-pointer">
@@ -61,7 +58,6 @@ export function Contact() {
               ))}
             </div>
 
-            {/* Name */}
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="name"
@@ -81,7 +77,6 @@ export function Contact() {
               />
             </div>
 
-            {/* Email */}
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="email"
@@ -101,7 +96,6 @@ export function Contact() {
               />
             </div>
 
-            {/* Message */}
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="message"
@@ -126,7 +120,6 @@ export function Contact() {
             </Button>
           </form>
 
-          {/* Illustration */}
           <div className="hidden md:flex items-end justify-end h-full overflow-hidden">
             <img src={contactUsImg} alt="Contact us illustration" style={{width: '650px', height: '648px', maxWidth: 'none', flexShrink: 0, transform: 'translateX(47%)'}} />
           </div>
